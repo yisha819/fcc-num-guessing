@@ -130,26 +130,53 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: games; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.games VALUES (1, 1, 138);
+INSERT INTO public.games VALUES (2, 1, 485);
+INSERT INTO public.games VALUES (3, 2, 522);
+INSERT INTO public.games VALUES (4, 2, 378);
+INSERT INTO public.games VALUES (5, 1, 876);
+INSERT INTO public.games VALUES (6, 1, 906);
+INSERT INTO public.games VALUES (7, 1, 702);
+INSERT INTO public.games VALUES (8, 3, 333);
+INSERT INTO public.games VALUES (9, 3, 645);
+INSERT INTO public.games VALUES (10, 4, 619);
+INSERT INTO public.games VALUES (11, 4, 123);
+INSERT INTO public.games VALUES (12, 3, 846);
+INSERT INTO public.games VALUES (13, 3, 292);
+INSERT INTO public.games VALUES (14, 3, 644);
+INSERT INTO public.games VALUES (15, 5, 359);
+INSERT INTO public.games VALUES (16, 5, 846);
+INSERT INTO public.games VALUES (17, 6, 247);
+INSERT INTO public.games VALUES (18, 6, 339);
+INSERT INTO public.games VALUES (19, 5, 42);
+INSERT INTO public.games VALUES (20, 5, 47);
+INSERT INTO public.games VALUES (21, 5, 223);
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.users VALUES (1, 'user_1793977851131');
+INSERT INTO public.users VALUES (2, 'user_1793977851130');
+INSERT INTO public.users VALUES (3, 'user_1793978075928');
+INSERT INTO public.users VALUES (4, 'user_1793978075927');
+INSERT INTO public.users VALUES (5, 'user_1793978208476');
+INSERT INTO public.users VALUES (6, 'user_1793978208475');
 
 
 --
 -- Name: games_game_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.games_game_id_seq', 1, false);
+SELECT pg_catalog.setval('public.games_game_id_seq', 21, true);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_user_id_seq', 6, true);
 
 
 --

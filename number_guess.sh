@@ -1,4 +1,3 @@
-cat << 'EOF' > number_guess.sh
 #!/bin/bash
 
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
@@ -8,7 +7,7 @@ SECRET_NUMBER=$(( RANDOM % 1000 + 1 ))
 echo "Enter your username:"
 read USERNAME
 
-# Look up user
+# Get user_id
 USER_ID=$($PSQL "SELECT user_id FROM users WHERE username = '$USERNAME'")
 
 if [[ -z $USER_ID ]]
@@ -25,13 +24,16 @@ fi
 echo "Guess the secret number between 1 and 1000:"
 read GUESS
 
-NUMBER_OF_GUESSES=1
+TRIES=1
 
-while [[ $GUESS -ne $SECRET_NUMBER ]]
+while true
 do
   if [[ ! $GUESS =~ ^[0-9]+$ ]]
   then
     echo "That is not an integer, guess again:"
+  elif [[ $GUESS -eq $SECRET_NUMBER ]]
+  then
+    break
   elif [[ $GUESS -gt $SECRET_NUMBER ]]
   then
     echo "It's lower than that, guess again:"
@@ -40,11 +42,9 @@ do
   fi
 
   read GUESS
-  (( NUMBER_OF_GUESSES++ ))
+  (( TRIES++ ))
 done
 
-# Record completed game in database
-INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(user_id, guesses) VALUES($USER_ID, $NUMBER_OF_GUESSES)")
+INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(user_id, guesses) VALUES($USER_ID, $TRIES)")
 
-echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $SECRET_NUMBER. Nice job!"
-EOF
+echo "You guessed it in $TRIES tries. The secret number was $SECRET_NUMBER. Nice job!"
